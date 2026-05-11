@@ -50,7 +50,7 @@ function PageHome({ onNavigate }) {
               </div>
             </div>
             <div>
-              <div className="mono" style={{ marginBottom: 14, color: "var(--ink-3)" }}>// LAB INDEX</div>
+              <div className="mono" style={{ marginBottom: 16, color: "var(--ink-3)", fontSize: 15 }}>// LAB INDEX</div>
               <div style={{ display: "grid", gap: 0 }}>
                 <Stat k="Open-source models &amp; servers" v="7+" />
                 <Stat k="Predictive models published" v="20+" />
@@ -213,12 +213,12 @@ function Stat({ k, v }) {
       display: "flex",
       justifyContent: "space-between",
       alignItems: "baseline",
-      padding: "16px 0",
+      padding: "18px 0",
       borderTop: "1px solid var(--rule-soft)",
       gap: 16
     }}>
-      <span className="mono" style={{ textTransform: "none", letterSpacing: "0.02em" }} dangerouslySetInnerHTML={{ __html: k }} />
-      <span className="display" style={{ fontSize: 26, color: "var(--ink)" }}>{v}</span>
+      <span className="mono" style={{ textTransform: "none", letterSpacing: "0.02em", fontSize: 17, lineHeight: 1.35 }} dangerouslySetInnerHTML={{ __html: k }} />
+      <span className="display" style={{ fontSize: 34, color: "var(--ink)" }}>{v}</span>
     </div>);
 
 }
