@@ -1,32 +1,17 @@
 /* AI4FH Lab — App shell with router + tweaks */
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "theme": "light",
-  "accentHue": 145,
-  "fontPair": "instrument-inter",
+  "theme": "dark",
+  "accentHue": 150,
+  "fontPair": "space-inter",
   "density": "comfortable"
 }/*EDITMODE-END*/;
 
 const FONT_PAIRS = {
-  "instrument-inter": {
-    display: '"Instrument Serif", Georgia, serif',
+  "space-inter": {
+    display: '"Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif',
     body: '"Inter Tight", -apple-system, BlinkMacSystemFont, sans-serif',
-    label: "Instrument Serif × Inter Tight",
-  },
-  "fraunces-ibm": {
-    display: '"Fraunces", Georgia, serif',
-    body: '"IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif',
-    label: "Fraunces × IBM Plex Sans",
-  },
-  "newsreader-geist": {
-    display: '"Newsreader", Georgia, serif',
-    body: '"Geist", -apple-system, BlinkMacSystemFont, sans-serif',
-    label: "Newsreader × Geist",
-  },
-  "redaction-sohne": {
-    display: '"DM Serif Display", Georgia, serif',
-    body: '"Manrope", -apple-system, BlinkMacSystemFont, sans-serif',
-    label: "DM Serif Display × Manrope",
+    label: "Space Grotesk × Inter Tight",
   },
 };
 
@@ -37,12 +22,21 @@ function App() {
     return window.NAV.find((n) => n.id === h) ? h : "home";
   });
 
+  React.useEffect(() => {
+    const onMove = (e) => {
+      document.body.style.setProperty("--mx", `${e.clientX}px`);
+      document.body.style.setProperty("--my", `${e.clientY}px`);
+    };
+    window.addEventListener("pointermove", onMove);
+    return () => window.removeEventListener("pointermove", onMove);
+  }, []);
+
   // Apply theme + accent + font tweaks
   React.useEffect(() => {
     const root = document.documentElement;
     root.setAttribute("data-theme", tweaks.theme);
     root.style.setProperty("--accent-h", tweaks.accentHue);
-    const pair = FONT_PAIRS[tweaks.fontPair] || FONT_PAIRS["instrument-inter"];
+    const pair = FONT_PAIRS[tweaks.fontPair] || FONT_PAIRS["space-inter"];
     root.style.setProperty("--font-display", pair.display);
     root.style.setProperty("--font-body", pair.body);
     document.body.style.setProperty("--gutter", tweaks.density === "compact" ? "clamp(16px, 3vw, 36px)" : "clamp(20px, 4vw, 56px)");
@@ -76,6 +70,7 @@ function App() {
   return (
     <>
       <TopBar active={active} onNavigate={navigate} />
+      <HUD />
       <main key={active}>
         <Page onNavigate={navigate} />
       </main>
@@ -99,7 +94,7 @@ function App() {
             unit="°"
           />
           <div style={{ display: "flex", gap: 6, marginTop: 8, flexWrap: "wrap" }}>
-            {[145, 30, 70, 200, 260, 330, 15].map((h) => (
+            {[150, 145, 70, 200, 260, 330, 30].map((h) => (
               <button
                 key={h}
                 onClick={() => setTweak("accentHue", h)}
@@ -107,7 +102,7 @@ function App() {
                   width: 26, height: 26,
                   borderRadius: "50%",
                   background: `oklch(0.55 0.06 ${h})`,
-                  border: tweaks.accentHue === h ? "2px solid #000" : "1px solid rgba(0,0,0,0.15)",
+                  border: tweaks.accentHue === h ? "2px solid var(--ink)" : "1px solid var(--rule)",
                   cursor: "pointer",
                 }}
               />

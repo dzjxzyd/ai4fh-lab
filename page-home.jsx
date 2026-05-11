@@ -28,6 +28,69 @@ const PILLAR_ICONS = {
 
 };
 
+function useCountUp(target, duration = 1400) {
+  const [value, setValue] = React.useState(0);
+
+  React.useEffect(() => {
+    const start = performance.now();
+    let frame;
+    const tick = (time) => {
+      const progress = Math.min(1, (time - start) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setValue(Math.round(target * eased));
+      if (progress < 1) frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [target, duration]);
+
+  return value;
+}
+
+function Typewriter({ text, delay = 0, speed = 45 }) {
+  const [count, setCount] = React.useState(0);
+
+  React.useEffect(() => {
+    let interval;
+    const start = setTimeout(() => {
+      interval = setInterval(() => {
+        setCount((current) => {
+          if (current >= text.length) {
+            clearInterval(interval);
+            return current;
+          }
+          return current + 1;
+        });
+      }, speed);
+    }, delay);
+
+    return () => {
+      clearTimeout(start);
+      clearInterval(interval);
+    };
+  }, [text, delay, speed]);
+
+  const done = count >= text.length;
+
+  return (
+    <span>
+      {text.slice(0, count)}
+      <span
+        style={{
+          display: "inline-block",
+          width: "0.55ch",
+          height: "0.9em",
+          background: "var(--accent)",
+          marginLeft: 2,
+          verticalAlign: "-0.08em",
+          boxShadow: "0 0 12px var(--accent-glow)",
+          animation: done ? "livePulse 1s steps(2) infinite" : "none",
+        }}
+      />
+    </span>
+  );
+}
+
 function PageHome({ onNavigate }) {
   return (
     <div className="page">
@@ -38,8 +101,8 @@ function PageHome({ onNavigate }) {
           <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 64, alignItems: "end" }} className="hero-grid">
             <div>
               <h1 className="display" style={{ fontSize: "clamp(56px, 9vw, 132px)", letterSpacing: "-0.025em" }}>
-                AI for <span style={{ fontStyle: "italic", color: "var(--accent-deep)" }}>food</span><br />
-                and <span style={{ fontStyle: "italic" }}>health</span>.
+                AI for <span style={{ color: "var(--accent)" }}>food</span><br />
+                and <Typewriter text="health" delay={700} speed={120} />
               </h1>
               <p style={{ fontSize: 19, color: "var(--ink-2)", maxWidth: 560, marginTop: 28, textWrap: "pretty", lineHeight: 1.55 }}>We work on bioactive compound discovery, smart biomanufacturing, and large language models — releasing open-source code and public webservers, alongside wet-lab collaborations.
 
@@ -50,7 +113,9 @@ function PageHome({ onNavigate }) {
               </div>
             </div>
             <div>
-              <div className="mono" style={{ marginBottom: 16, color: "var(--ink-3)", fontSize: 15 }}>// LAB INDEX</div>
+              <div className="mono" style={{ marginBottom: 16, color: "var(--ink-3)", fontSize: 15, display: "flex", alignItems: "center" }}>
+                <span className="live-dot"></span>// LAB INDEX · LIVE
+              </div>
               <div style={{ display: "grid", gap: 0 }}>
                 <Stat k="Open-source models &amp; servers" v="7+" />
                 <Stat k="Predictive models published" v="20+" />
@@ -208,6 +273,11 @@ function PageHome({ onNavigate }) {
 }
 
 function Stat({ k, v }) {
+  const match = String(v).match(/^(\d+)(.*)$/);
+  const number = match ? parseInt(match[1], 10) : null;
+  const suffix = match ? match[2] : "";
+  const count = useCountUp(number || 0, 1400);
+
   return (
     <div style={{
       display: "flex",
@@ -217,8 +287,10 @@ function Stat({ k, v }) {
       borderTop: "1px solid var(--rule-soft)",
       gap: 16
     }}>
-      <span className="mono" style={{ textTransform: "none", letterSpacing: "0.02em", fontSize: 17, lineHeight: 1.35 }} dangerouslySetInnerHTML={{ __html: k }} />
-      <span className="display" style={{ fontSize: 34, color: "var(--ink)" }}>{v}</span>
+      <span className="mono" style={{ textTransform: "none", letterSpacing: "0.02em", fontSize: 17, lineHeight: 1.35, color: "var(--ink-2)" }} dangerouslySetInnerHTML={{ __html: k }} />
+      <span className="display" style={{ fontSize: 34, color: "var(--accent)", textShadow: "0 0 16px var(--accent-glow)" }}>
+        {number !== null ? `${count}${suffix}` : v}
+      </span>
     </div>);
 
 }

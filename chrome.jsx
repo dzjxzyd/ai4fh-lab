@@ -136,4 +136,71 @@ function SectionHeader({ eyebrow, title, lead, align = "left" }) {
   );
 }
 
-Object.assign(window, { TopBar, Footer, Avatar, SectionHeader });
+function HUD() {
+  const [t, setT] = useState(() => new Date());
+  const [scroll, setScroll] = useState(0);
+
+  useEffect(() => {
+    const tick = setInterval(() => setT(new Date()), 1000);
+    const onScroll = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      setScroll(max > 0 ? h.scrollTop / max * 100 : 0);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => {
+      clearInterval(tick);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
+  const pad = (n) => String(n).padStart(2, "0");
+  const timestamp = `${t.getUTCFullYear()}.${pad(t.getUTCMonth() + 1)}.${pad(t.getUTCDate())} ${pad(t.getUTCHours())}:${pad(t.getUTCMinutes())}:${pad(t.getUTCSeconds())} UTC`;
+
+  return (
+    <>
+      <div
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          height: 2,
+          width: `${scroll}%`,
+          zIndex: 60,
+          background: "var(--accent)",
+          boxShadow: "0 0 12px var(--accent), 0 0 24px var(--accent-glow)",
+          transition: "width 0.08s linear",
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        className="hud-clock"
+        style={{
+          position: "fixed",
+          bottom: 16,
+          right: 18,
+          zIndex: 60,
+          fontFamily: "var(--font-mono)",
+          fontSize: 11,
+          color: "var(--accent)",
+          letterSpacing: "0.08em",
+          textShadow: "0 0 8px var(--accent-glow)",
+          padding: "6px 10px",
+          border: "1px solid color-mix(in oklch, var(--accent) 40%, transparent)",
+          background: "color-mix(in oklch, var(--paper) 60%, transparent)",
+          backdropFilter: "blur(8px)",
+          pointerEvents: "none",
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
+        }}
+      >
+        <span className="live-dot" style={{ marginRight: 0 }} />
+        <span>SYS · {timestamp}</span>
+      </div>
+    </>
+  );
+}
+
+Object.assign(window, { TopBar, Footer, Avatar, SectionHeader, HUD });
