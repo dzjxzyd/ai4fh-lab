@@ -110,7 +110,7 @@ window.PEOPLE = [
   },
   {
     name: "Xiao Wang",
-    role: "Volunteer",
+    role: "Volunteer - MSc Student",
     note: "2025 — 2026",
     photo: null,
     extra: "B.S. China Pharmaceutical University",
@@ -119,7 +119,7 @@ window.PEOPLE = [
   },
   {
     name: "Zhan Zhang",
-    role: "Volunteer",
+    role: "Volunteer - MSc Student",
     note: "2025 — 2026",
     photo: "images/zz.jpg",
     extra: "B.E. Harbin University of Commerce",
