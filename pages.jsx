@@ -56,7 +56,8 @@ function PageResearch({ onNavigate }) {
 
 function PagePeople() {
   const pi = window.PEOPLE.find((p) => p.pi);
-  const others = window.PEOPLE.filter((p) => !p.pi);
+  const others = window.PEOPLE.filter((p) => !p.pi && !p.alumni);
+  const alumni = window.PEOPLE.filter((p) => p.alumni);
   return (
     <div className="page">
       <section className="page-section">
@@ -126,8 +127,21 @@ function PagePeople() {
             </div>
           </div>
 
-          <div style={{ marginTop: 56, padding: 32, border: "1px dashed var(--rule)", borderRadius: 12, color: "var(--ink-3)", fontSize: 14 }}>
-            <strong style={{ color: "var(--ink-2)" }}>Alumni —</strong> coming soon. The lab was founded in {window.LAB.founded}; alumni profiles will appear here as members move on to next chapters.
+          <div style={{ marginTop: 56 }}>
+            <div className="eyebrow" style={{ marginBottom: 20 }}>Alumni</div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 1, background: "var(--rule-soft)", border: "1px solid var(--rule-soft)", borderRadius: 12, overflow: "hidden" }}>
+              {alumni.map((p) => (
+                <div key={p.name} style={{ background: "var(--paper)", padding: 28, display: "flex", gap: 20, alignItems: "flex-start" }}>
+                  <Avatar src={p.photo} initials={p.initials} size={88} />
+                  <div style={{ minWidth: 0 }}>
+                    <div style={{ fontSize: 18, fontWeight: 500, marginBottom: 4 }}>{p.name}</div>
+                    <div style={{ fontSize: 13, color: "var(--accent-deep)", marginBottom: 8 }}>{p.role}</div>
+                    <div style={{ fontSize: 13, color: "var(--ink-3)", lineHeight: 1.5 }}>{p.note}</div>
+                    {p.extra && <div style={{ fontSize: 12, color: "var(--ink-3)", lineHeight: 1.5, marginTop: 4 }}>{p.extra}</div>}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
