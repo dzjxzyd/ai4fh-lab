@@ -110,8 +110,8 @@ window.PEOPLE = [
   },
   {
     name: "Xiao Wang",
-    role: "Affiliated MSc Student",
-    note: "MSc at UCD · 2025 — 2026 · informally co-advised",
+    role: "Volunteer",
+    note: "2025 — 2026",
     photo: null,
     extra: "B.S. China Pharmaceutical University",
     initials: "XW",
@@ -119,8 +119,8 @@ window.PEOPLE = [
   },
   {
     name: "Zhan Zhang",
-    role: "Affiliated MSc Student",
-    note: "MSc at UCD · 2025 — 2026 · informally co-advised",
+    role: "Volunteer",
+    note: "2025 — 2026",
     photo: "images/zz.jpg",
     extra: "B.E. Harbin University of Commerce",
     initials: "ZZ",

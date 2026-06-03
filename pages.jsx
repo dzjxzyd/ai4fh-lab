@@ -93,7 +93,7 @@ function PagePeople() {
                 <div style={{ minWidth: 0 }}>
                   <div style={{ fontSize: 18, fontWeight: 500, marginBottom: 4 }}>{p.name}</div>
                   <div style={{ fontSize: 13, color: "var(--accent-deep)", marginBottom: 8 }}>{p.role}</div>
-                  <div style={{ fontSize: 13, color: "var(--ink-3)", lineHeight: 1.5 }}>{p.note}</div>
+                  <PersonNote note={p.note} />
                   {p.extra && <div style={{ fontSize: 12, color: "var(--ink-3)", lineHeight: 1.5, marginTop: 4 }}>{p.extra}</div>}
                 </div>
               </div>
@@ -136,7 +136,7 @@ function PagePeople() {
                   <div style={{ minWidth: 0 }}>
                     <div style={{ fontSize: 18, fontWeight: 500, marginBottom: 4 }}>{p.name}</div>
                     <div style={{ fontSize: 13, color: "var(--accent-deep)", marginBottom: 8 }}>{p.role}</div>
-                    <div style={{ fontSize: 13, color: "var(--ink-3)", lineHeight: 1.5 }}>{p.note}</div>
+                    <PersonNote note={p.note} />
                     {p.extra && <div style={{ fontSize: 12, color: "var(--ink-3)", lineHeight: 1.5, marginTop: 4 }}>{p.extra}</div>}
                   </div>
                 </div>
@@ -145,6 +145,17 @@ function PagePeople() {
           </div>
         </div>
       </section>
+    </div>
+  );
+}
+
+function PersonNote({ note }) {
+  const lines = note.startsWith("Joining ") ? note.split(" · ") : [note];
+  return (
+    <div style={{ fontSize: 13, color: "var(--ink-3)", lineHeight: 1.5 }}>
+      {lines.map((line, i) => (
+        <div key={i}>{line}</div>
+      ))}
     </div>
   );
 }
