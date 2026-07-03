@@ -18,7 +18,7 @@ window.PI = {
   email: "zhenjiao.du@ucd.ie",
   photo: "images/002_square.jpg",
   bio: [
-    "Postdoc, Duke University, 2025",
+    "Postdoc, Duke University (USA), 2025",
     "Ph.D. Kansas State University (USA), 2024",
     "M.E. China Agricultural University (China), 2020",
     "B.E. Wuhan Polytechnic University (China), 2018",
@@ -77,7 +77,7 @@ window.PEOPLE = [
   {
     name: "Qidong Xue",
     role: "PhD Student",
-    note: "Joining 2025 · M.S. Jiangnan University",
+    note: "2025.09 - present · M.S. Jiangnan University",
     photo: "images/xqd.jpg",
     extra: "B.S. Jiangnan University",
     initials: "QX",
@@ -85,7 +85,7 @@ window.PEOPLE = [
   {
     name: "Dongyang Xu",
     role: "PhD Student",
-    note: "Joining 2025 · M.S. South China University of Technology",
+    note: "2025.09 - present · M.S. South China University of Technology",
     photo: null,
     extra: "B.E. Nanchang University",
     initials: "DX",
