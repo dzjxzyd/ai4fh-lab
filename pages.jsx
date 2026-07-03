@@ -150,7 +150,7 @@ function PagePeople() {
 }
 
 function PersonNote({ note }) {
-  const lines = note.startsWith("Joining ") ? note.split(" · ") : [note];
+  const lines = note.includes(" · M.S.") ? note.split(" · ") : [note];
   return (
     <div style={{ fontSize: 13, color: "var(--ink-3)", lineHeight: 1.5 }}>
       {lines.map((line, i) => (
