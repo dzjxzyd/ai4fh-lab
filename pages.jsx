@@ -62,7 +62,7 @@ function PagePeople() {
     <div className="page">
       <section className="page-section">
         <div className="container">
-          <SectionHeader eyebrow="People" title="People" lead="The lab is led by Zhenjiao Du, with members from food engineering, pharmacy, and machine learning backgrounds." />
+          <SectionHeader eyebrow="People" title="People" lead="The lab is led by Zhenjiao Du, with members from food chemistry, food engineering, microbiology, pharmacy, and machine learning backgrounds." />
 
           {/* PI block */}
           <div style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: 40, marginTop: 24, marginBottom: 56, paddingBottom: 56, borderBottom: "1px solid var(--rule-soft)" }} className="pi-grid">
