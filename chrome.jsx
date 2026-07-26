@@ -2,7 +2,7 @@
 
 const { useState, useEffect, useRef } = React;
 
-function TopBar({ active, onNavigate }) {
+function TopBar({ active, onNavigate, lang, setLang, t }) {
   const [open, setOpen] = useState(false);
   return (
     <header className="topbar">
@@ -19,19 +19,24 @@ function TopBar({ active, onNavigate }) {
               className={`nav-item ${active === n.id ? "active" : ""}`}
               onClick={(e) => { e.preventDefault(); onNavigate(n.id); setOpen(false); }}
             >
-              {n.label}
+              {t(`nav.${n.id}`)}
             </a>
           ))}
         </nav>
+        <div className="lang-switch" aria-label="Language switcher">
+          <button className={lang === "en" ? "active" : ""} onClick={() => setLang("en")}>English</button>
+          <span>/</span>
+          <button className={lang === "zh" ? "active" : ""} onClick={() => setLang("zh")}>中文</button>
+        </div>
         <button className="nav-mobile-toggle" onClick={() => setOpen((v) => !v)}>
-          {open ? "Close" : "Menu"}
+          {open ? t("chrome.close") : t("chrome.menu")}
         </button>
       </div>
     </header>
   );
 }
 
-function Footer({ onNavigate }) {
+function Footer({ onNavigate, t }) {
   return (
     <footer className="footer">
       <div className="container">
@@ -40,37 +45,33 @@ function Footer({ onNavigate }) {
             <div className="brand-mark" style={{ fontSize: 22, marginBottom: 10 }}>
               AI4FH<span className="dot" style={{ color: "var(--accent)" }}>.</span>
             </div>
-            <div className="muted" style={{ maxWidth: 360, lineHeight: 1.6 }}>
-              Artificial Intelligence for Food & Health Lab.<br />
-              School of Biosystems & Food Engineering,<br />
-              University College Dublin, Ireland.
-            </div>
+            <div className="muted" style={{ maxWidth: 360, lineHeight: 1.6 }} dangerouslySetInnerHTML={{ __html: t("chrome.footerText") }} />
           </div>
           <div>
-            <h5>Lab</h5>
+            <h5>{t("chrome.footerLab")}</h5>
             <ul>
               {window.NAV.slice(1, 5).map((n) => (
                 <li key={n.id}>
-                  <a href={`#${n.id}`} onClick={(e) => { e.preventDefault(); onNavigate(n.id); }} className="link">{n.label}</a>
+                  <a href={`#${n.id}`} onClick={(e) => { e.preventDefault(); onNavigate(n.id); }} className="link">{t(`nav.${n.id}`)}</a>
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <h5>Engage</h5>
+            <h5>{t("chrome.footerEngage")}</h5>
             <ul>
-              <li><a href="#join" onClick={(e) => { e.preventDefault(); onNavigate("join"); }} className="link">Open positions</a></li>
-              <li><a href="#collab" onClick={(e) => { e.preventDefault(); onNavigate("collab"); }} className="link">Collaborate</a></li>
-              <li><a href={`mailto:${window.LAB.email}`} className="link">Email us</a></li>
+              <li><a href="#join" onClick={(e) => { e.preventDefault(); onNavigate("join"); }} className="link">{t("chrome.openPositions")}</a></li>
+              <li><a href="#collab" onClick={(e) => { e.preventDefault(); onNavigate("collab"); }} className="link">{t("chrome.collaborate")}</a></li>
+              <li><a href={`mailto:${window.LAB.email}`} className="link">{t("chrome.emailUs")}</a></li>
             </ul>
           </div>
           <div>
-            <h5>Elsewhere</h5>
+            <h5>{t("chrome.footerElsewhere")}</h5>
             <ul>
               <li><a href={window.PI.links[0].url} className="link">Google Scholar</a></li>
               <li><a href={window.PI.links[2].url} className="link">GitHub</a></li>
               <li><a href={window.PI.links[1].url} className="link">ORCID</a></li>
-              <li><a href={window.PI.links[3].url} className="link">UCD profile</a></li>
+              <li><a href={window.PI.links[3].url} className="link">{t("chrome.ucdProfile")}</a></li>
             </ul>
           </div>
         </div>

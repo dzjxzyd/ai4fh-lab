@@ -17,10 +17,22 @@ const FONT_PAIRS = {
 
 function App() {
   const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const [lang, setLang] = React.useState(() => {
+    const saved = window.localStorage.getItem("ai4fh-lang");
+    return saved === "zh" ? "zh" : "en";
+  });
   const [active, setActive] = React.useState(() => {
     const h = window.location.hash.replace("#", "");
     return window.NAV.find((n) => n.id === h) ? h : "home";
   });
+
+  const t = React.useCallback((key) => {
+    const keys = key.split(".");
+    const dict = window.I18N?.[lang] || window.I18N.en;
+    const fallback = window.I18N.en;
+    const read = (source) => keys.reduce((value, part) => value?.[part], source);
+    return read(dict) ?? read(fallback) ?? key;
+  }, [lang]);
 
   React.useEffect(() => {
     const onMove = (e) => {
@@ -34,13 +46,18 @@ function App() {
   // Apply theme + accent + font tweaks
   React.useEffect(() => {
     const root = document.documentElement;
+    root.setAttribute("lang", lang === "zh" ? "zh-CN" : "en");
     root.setAttribute("data-theme", tweaks.theme);
     root.style.setProperty("--accent-h", tweaks.accentHue);
     const pair = FONT_PAIRS[tweaks.fontPair] || FONT_PAIRS["space-inter"];
     root.style.setProperty("--font-display", pair.display);
     root.style.setProperty("--font-body", pair.body);
     document.body.style.setProperty("--gutter", tweaks.density === "compact" ? "clamp(16px, 3vw, 36px)" : "clamp(20px, 4vw, 56px)");
-  }, [tweaks]);
+  }, [tweaks, lang]);
+
+  React.useEffect(() => {
+    window.localStorage.setItem("ai4fh-lang", lang);
+  }, [lang]);
 
   const navigate = (id) => {
     setActive(id);
@@ -69,12 +86,12 @@ function App() {
 
   return (
     <>
-      <TopBar active={active} onNavigate={navigate} />
+      <TopBar active={active} onNavigate={navigate} lang={lang} setLang={setLang} t={t} />
       <HUD />
       <main key={active}>
-        <Page onNavigate={navigate} />
+        <Page onNavigate={navigate} lang={lang} t={t} />
       </main>
-      <Footer onNavigate={navigate} />
+      <Footer onNavigate={navigate} t={t} />
 
       <TweaksPanel title="Tweaks">
         <TweakSection title="Theme">

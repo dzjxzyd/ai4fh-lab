@@ -51,6 +51,7 @@ function Typewriter({ text, delay = 0, speed = 45 }) {
   const [count, setCount] = React.useState(0);
 
   React.useEffect(() => {
+    setCount(0);
     let interval;
     const start = setTimeout(() => {
       interval = setInterval(() => {
@@ -91,7 +92,7 @@ function Typewriter({ text, delay = 0, speed = 45 }) {
   );
 }
 
-function PageHome({ onNavigate }) {
+function PageHome({ onNavigate, t }) {
   return (
     <div className="page">
       {/* HERO */}
@@ -101,25 +102,25 @@ function PageHome({ onNavigate }) {
           <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 64, alignItems: "end" }} className="hero-grid">
             <div>
               <h1 className="display" style={{ fontSize: "clamp(56px, 9vw, 132px)", letterSpacing: "-0.025em" }}>
-                AI for <span style={{ color: "var(--accent)" }}>food</span><br />
-                and <Typewriter text="health" delay={700} speed={120} />
+                {t("home.heroTitleA")} <span style={{ color: "var(--accent)" }}>{t("home.heroFood")}</span><br />
+                {t("home.heroTitleB")} <Typewriter text={t("home.heroHealth")} delay={700} speed={120} />
               </h1>
-              <p style={{ fontSize: 19, color: "var(--ink-2)", maxWidth: 560, marginTop: 28, textWrap: "pretty", lineHeight: 1.55 }}>We work on bioactive compound discovery, smart biomanufacturing, and large language models — releasing open-source code and public webservers, alongside wet-lab collaborations.
+              <p style={{ fontSize: 19, color: "var(--ink-2)", maxWidth: 560, marginTop: 28, textWrap: "pretty", lineHeight: 1.55 }}>{t("home.heroLead")}
 
               </p>
               <div style={{ display: "flex", gap: 12, marginTop: 36, flexWrap: "wrap" }}>
-                <button className="btn btn-primary" onClick={() => onNavigate("research")}>Read our research</button>
-                <button className="btn btn-ghost" onClick={() => onNavigate("join")}>Join the lab →</button>
+                <button className="btn btn-primary" onClick={() => onNavigate("research")}>{t("home.readResearch")}</button>
+                <button className="btn btn-ghost" onClick={() => onNavigate("join")}>{t("home.joinLab")}</button>
               </div>
             </div>
             <div>
               <div className="mono" style={{ marginBottom: 16, color: "var(--ink-3)", fontSize: 15, display: "flex", alignItems: "center" }}>
-                <span className="live-dot"></span>// LAB INDEX · LIVE
+                <span className="live-dot"></span>{t("home.labIndex")}
               </div>
               <div style={{ display: "grid", gap: 0 }}>
-                <Stat k="Open-source models &amp; servers" v="7+" />
-                <Stat k="Predictive models published" v="20+" />
-                <Stat k="Established" v={window.LAB.founded} />
+                <Stat k={t("home.statModels")} v="7+" />
+                <Stat k={t("home.statPublished")} v="20+" />
+                <Stat k={t("home.statEstablished")} v={window.LAB.founded} />
               </div>
             </div>
           </div>
@@ -131,19 +132,19 @@ function PageHome({ onNavigate }) {
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 56 }} className="split-grid">
             <div>
-              <div className="eyebrow" style={{ marginBottom: 16 }}>Research</div>
+              <div className="eyebrow" style={{ marginBottom: 16 }}>{t("home.research")}</div>
               <h2 className="display" style={{ fontSize: "clamp(32px, 4.5vw, 52px)" }}>
-                Research directions
+                {t("home.researchDirections")}
               </h2>
               <p style={{ marginTop: 16, color: "var(--ink-3)", lineHeight: 1.6, maxWidth: 380 }}>
-                Five active threads at the AI–food–health interface.
+                {t("home.researchLead")}
               </p>
               <button
                 className="btn btn-ghost"
                 style={{ marginTop: 28 }}
                 onClick={() => onNavigate("research")}>
                 
-                See all research →
+                {t("home.seeAllResearch")}
               </button>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
@@ -166,8 +167,8 @@ function PageHome({ onNavigate }) {
                       </div>
                       <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--ink-4)", letterSpacing: "0.08em" }}>{p.n}</div>
                     </div>
-                    <div style={{ fontSize: 24, fontFamily: "var(--font-display)", marginBottom: 12, letterSpacing: "-0.005em", lineHeight: 1.15 }}>{p.title}</div>
-                    <div style={{ color: "var(--ink-2)", lineHeight: 1.6, fontSize: 14, maxWidth: isImpact ? 640 : "none" }}>{p.body}</div>
+                    <div style={{ fontSize: 24, fontFamily: "var(--font-display)", marginBottom: 12, letterSpacing: "-0.005em", lineHeight: 1.15 }}>{t(`pillars.${i}.title`)}</div>
+                    <div style={{ color: "var(--ink-2)", lineHeight: 1.6, fontSize: 14, maxWidth: isImpact ? 640 : "none" }}>{t(`pillars.${i}.body`)}</div>
                   </div>);
 
               })}
@@ -183,8 +184,8 @@ function PageHome({ onNavigate }) {
         <div className="container">
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", marginBottom: 36, gap: 24, flexWrap: "wrap" }}>
             <div>
-              <div className="eyebrow" style={{ marginBottom: 12 }}>Open source</div>
-              <h2 className="display" style={{ fontSize: "clamp(28px, 3.6vw, 44px)" }}>Models &amp; webservers from the lab</h2>
+              <div className="eyebrow" style={{ marginBottom: 12 }}>{t("home.openSource")}</div>
+              <h2 className="display" style={{ fontSize: "clamp(28px, 3.6vw, 44px)" }}>{t("home.modelsTitle")}</h2>
             </div>
             <a className="link" href="https://github.com/dzjxzyd">github.com/dzjxzyd ↗</a>
           </div>
@@ -201,11 +202,11 @@ function PageHome({ onNavigate }) {
                   {p.webserver && (
                     <span style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "2px 8px", borderRadius: 999, background: "var(--accent-soft)", color: "var(--accent-deep)", fontSize: 10, letterSpacing: "0.06em" }}>
                       <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent-deep)" }}></span>
-                      WEBSERVER
+                      {t("home.webserver")}
                     </span>
                   )}
                 </div>
-                <div style={{ color: "var(--ink-2)", fontSize: 14, lineHeight: 1.55 }}>{p.body}</div>
+                <div style={{ color: "var(--ink-2)", fontSize: 14, lineHeight: 1.55 }}>{t(`projects.${i}`)}</div>
               </a>
             )}
           </div>
@@ -219,15 +220,15 @@ function PageHome({ onNavigate }) {
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 56 }} className="split-grid">
             <div>
-              <div className="eyebrow" style={{ marginBottom: 12 }}>News</div>
-              <h2 className="display" style={{ fontSize: "clamp(28px, 3.6vw, 44px)" }}>News</h2>
-              <button className="btn btn-ghost" style={{ marginTop: 24 }} onClick={() => onNavigate("news")}>All updates →</button>
+              <div className="eyebrow" style={{ marginBottom: 12 }}>{t("home.news")}</div>
+              <h2 className="display" style={{ fontSize: "clamp(28px, 3.6vw, 44px)" }}>{t("home.news")}</h2>
+              <button className="btn btn-ghost" style={{ marginTop: 24 }} onClick={() => onNavigate("news")}>{t("home.allUpdates")}</button>
             </div>
             <div>
               {window.NEWS.slice(0, 4).map((n, i) =>
               <div key={i} style={{ display: "grid", gridTemplateColumns: "120px 1fr", gap: 24, padding: "20px 0", borderTop: i === 0 ? "none" : "1px solid var(--rule-soft)" }}>
                   <div className="mono" style={{ paddingTop: 4 }}>{n.date}</div>
-                  <div style={{ color: "var(--ink-2)", lineHeight: 1.55 }}>{n.body}</div>
+                  <div style={{ color: "var(--ink-2)", lineHeight: 1.55 }}>{t(`newsItems.${i}`)}</div>
                 </div>
               )}
             </div>
@@ -253,16 +254,16 @@ function PageHome({ onNavigate }) {
             overflow: "hidden"
           }} className="cta-card">
             <div style={{ position: "relative", zIndex: 1 }}>
-              <div className="eyebrow" style={{ marginBottom: 14 }}><span className="live-dot" style={{ display: "inline-block", verticalAlign: "middle", marginRight: 8 }}></span>Open positions</div>
+              <div className="eyebrow" style={{ marginBottom: 14 }}><span className="live-dot" style={{ display: "inline-block", verticalAlign: "middle", marginRight: 8 }}></span>{t("home.ctaEyebrow")}</div>
               <h3 className="display" style={{ fontSize: "clamp(28px, 3.6vw, 44px)", marginBottom: 14 }}>
-                Open positions
+                {t("home.ctaTitle")}
               </h3>
               <p style={{ color: "var(--ink-2)", fontSize: 16, lineHeight: 1.6 }}>
-                Recruiting MSc / PhD students and postdocs. Backgrounds in ML, food chemistry, microbiology, computational chemistry, biochemistry, bioinformatics, or synthetic biology are all welcome.
+                {t("home.ctaLead")}
               </p>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 10, alignItems: "flex-start", position: "relative", zIndex: 1 }}>
-              <button className="btn btn-primary" onClick={() => onNavigate("join")}>See open positions</button>
+              <button className="btn btn-primary" onClick={() => onNavigate("join")}>{t("home.seeOpenPositions")}</button>
               <a className="link" style={{ marginTop: 4 }} href={`mailto:${window.LAB.email}`}>{window.LAB.email}</a>
             </div>
           </div>
