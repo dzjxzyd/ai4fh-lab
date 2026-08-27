@@ -86,7 +86,7 @@ window.PEOPLE = [
     name: "Dongyang Xu",
     role: "PhD Student",
     note: "2025.09 - present · M.S. South China University of Technology",
-    photo: null,
+    photo: "images/dongyang-xu.jpg",
     extra: "B.E. Nanchang University",
     initials: "DX",
   },
