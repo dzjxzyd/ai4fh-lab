@@ -476,6 +476,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   will-change: transform;
 }
 
+.news-featured {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+}
+
 /* Numbered cell — used for research pillars */
 .cell {
   background: color-mix(in oklch, var(--paper-2) 58%, transparent);
@@ -563,7 +567,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .pillar-row { grid-template-columns: 1fr !important; }
   .pub-row { grid-template-columns: 60px 1fr !important; }
   .pub-row > div:last-child { grid-column: 1 / -1; }
-  .news-images { grid-template-columns: 1fr !important; }
+  .news-images { grid-template-columns: minmax(0, 1fr) !important; }
+  .news-featured .placeholder-img { min-height: 220px !important; }
 }
 
 /* Responsive */

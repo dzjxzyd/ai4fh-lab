@@ -219,14 +219,30 @@ function PagePublications({ t }) {
 }
 
 function PageNews({ t }) {
-  const featured = window.NEWS.find((item) => item.image) || window.NEWS[0];
+  const featured = window.NEWS[0];
   const featuredIndex = window.NEWS.indexOf(featured);
+  const gallery = window.NEWS_GALLERY || window.NEWS.filter((item) => item.image);
   return (
     <div className="page">
       <section className="page-section">
         <div className="container">
           <SectionHeader eyebrow={t("news.eyebrow")} title={t("news.title")} lead={t("news.lead")} />
-          <div style={{ maxWidth: 820 }}>
+
+          <div style={{ marginTop: 20, display: "grid", gap: 28, alignItems: "stretch" }} className="news-featured news-images">
+            <div className="placeholder-img" style={{ aspectRatio: "16 / 10", minHeight: 320, minWidth: 0 }}>
+              <img src={featured.image} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 6 }} onError={(e) => e.target.style.display = 'none'} />
+            </div>
+            <div className="card" style={{ display: "flex", flexDirection: "column", justifyContent: "center", minWidth: 0 }}>
+              <div className="eyebrow" style={{ marginBottom: 12 }}>{t("news.featured")}</div>
+              <h3 className="display" style={{ fontSize: 34, marginBottom: 14 }}>{featured.date}</h3>
+              <p style={{ color: "var(--ink-2)", lineHeight: 1.6, fontSize: 17 }}>
+                {t(`newsItems.${featuredIndex}`)}
+              </p>
+            </div>
+          </div>
+
+          <div style={{ marginTop: 58, maxWidth: 900 }}>
+            <div className="eyebrow" style={{ marginBottom: 10 }}>{t("news.timeline")}</div>
             {window.NEWS.map((n, i) => (
               <div key={i} style={{ display: "grid", gridTemplateColumns: "140px 1fr", gap: 32, padding: "28px 0", borderTop: i === 0 ? "1px solid var(--rule)" : "1px solid var(--rule-soft)" }}>
                 <div style={{ fontFamily: "var(--font-mono)", fontSize: 13, color: "var(--ink-3)" }}>{n.date}</div>
@@ -236,16 +252,21 @@ function PageNews({ t }) {
             <div style={{ borderTop: "1px solid var(--rule-soft)" }} />
           </div>
 
-          <div style={{ marginTop: 64, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }} className="news-images">
-            <div className="placeholder-img" style={{ aspectRatio: "4 / 3" }}>
-              <img src={featured.image} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 6 }} onError={(e) => e.target.style.display = 'none'} />
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-              <div className="eyebrow" style={{ marginBottom: 12 }}>{t("news.featured")}</div>
-              <h3 className="display" style={{ fontSize: 32, marginBottom: 14 }}>{featured.date}</h3>
-              <p style={{ color: "var(--ink-2)", lineHeight: 1.6 }}>
-                {t(`newsItems.${featuredIndex}`)}
-              </p>
+          <div style={{ marginTop: 72, paddingTop: 42, borderTop: "1px solid var(--rule)" }}>
+            <SectionHeader eyebrow={t("news.galleryEyebrow")} title={t("news.galleryTitle")} lead={t("news.galleryLead")} />
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 18, marginTop: 26 }}>
+              {gallery.map((item, i) => (
+                <figure key={`${item.date}-${item.image}`} className="cell" style={{ margin: 0, padding: 0, overflow: "hidden" }}>
+                  <div className="placeholder-img" style={{ aspectRatio: "4 / 3", border: "none" }}>
+                    <img src={item.image} alt={t(`galleryItems.${i}.title`)} style={{ width: "100%", height: "100%", objectFit: "cover" }} onError={(e) => e.target.style.display = 'none'} />
+                  </div>
+                  <figcaption style={{ padding: "18px 18px 20px" }}>
+                    <div style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--neon)", marginBottom: 8 }}>{item.date}</div>
+                    <div style={{ fontSize: 20, fontFamily: "var(--font-display)", marginBottom: 8 }}>{t(`galleryItems.${i}.title`)}</div>
+                    <div style={{ color: "var(--ink-3)", lineHeight: 1.55 }}>{t(`galleryItems.${i}.caption`)}</div>
+                  </figcaption>
+                </figure>
+              ))}
             </div>
           </div>
         </div>

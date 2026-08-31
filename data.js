@@ -286,7 +286,12 @@ window.PUBLICATIONS = [
 
 window.NEWS = [
   { date: "Aug 31, 2026", body: "Welcome Dongyang and Qidong to the AI4FH Lab.", image: "images/welcome-dongyang-qidong.jpg" },
-  { date: "Jun 2025", body: "AI4FH Lab is established at UCD. We are open for PhD, MSc, and postdoc inquiries." },
+  { date: "Jun 2025", body: "AI4FH Lab is established at UCD. We are open for PhD, MSc, and postdoc inquiries.", image: "images/first.jpg" },
+];
+
+window.NEWS_GALLERY = [
+  { date: "Aug 31, 2026", image: "images/welcome-dongyang-qidong.jpg" },
+  { date: "Jun 2025", image: "images/first.jpg" },
 ];
 
 window.NAV = [
@@ -383,6 +388,10 @@ window.I18N = {
       title: "News",
       lead: "Updates from the lab.",
       featured: "Latest from the lab",
+      timeline: "Timeline",
+      galleryEyebrow: "Gallery",
+      galleryTitle: "Lab moments",
+      galleryLead: "Photos from AI4FH Lab milestones and everyday lab life.",
     },
     join: {
       eyebrow: "Open positions",
@@ -446,6 +455,16 @@ window.I18N = {
     newsItems: [
       "Welcome Dongyang and Qidong to the AI4FH Lab.",
       "AI4FH Lab is established at UCD. We are open for PhD, MSc, and postdoc inquiries.",
+    ],
+    galleryItems: [
+      {
+        title: "Welcome Dongyang and Qidong",
+        caption: "Dongyang and Qidong join the AI4FH Lab.",
+      },
+      {
+        title: "The first day",
+        caption: "AI4FH Lab opens at UCD.",
+      },
     ],
   },
   zh: {
@@ -531,6 +550,10 @@ window.I18N = {
       title: "动态",
       lead: "实验室最新消息。",
       featured: "实验室最新动态",
+      timeline: "时间线",
+      galleryEyebrow: "相册",
+      galleryTitle: "实验室瞬间",
+      galleryLead: "记录 AI4FH 实验室的重要节点和日常时刻。",
     },
     join: {
       eyebrow: "开放职位",
@@ -594,6 +617,16 @@ window.I18N = {
     newsItems: [
       "欢迎 Dongyang 和 Qidong 加入 AI4FH 实验室。",
       "AI4FH 实验室在 UCD 成立。我们开放 PhD、MSc 和博士后咨询。",
+    ],
+    galleryItems: [
+      {
+        title: "欢迎 Dongyang 和 Qidong",
+        caption: "Dongyang 和 Qidong 加入 AI4FH 实验室。",
+      },
+      {
+        title: "实验室第一天",
+        caption: "AI4FH 实验室在 UCD 成立。",
+      },
     ],
   },
 };
