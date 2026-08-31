@@ -219,6 +219,8 @@ function PagePublications({ t }) {
 }
 
 function PageNews({ t }) {
+  const featured = window.NEWS.find((item) => item.image) || window.NEWS[0];
+  const featuredIndex = window.NEWS.indexOf(featured);
   return (
     <div className="page">
       <section className="page-section">
@@ -236,13 +238,13 @@ function PageNews({ t }) {
 
           <div style={{ marginTop: 64, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }} className="news-images">
             <div className="placeholder-img" style={{ aspectRatio: "4 / 3" }}>
-              <img src="images/first.jpg" alt="" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 6 }} onError={(e) => e.target.style.display = 'none'} />
+              <img src={featured.image} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 6 }} onError={(e) => e.target.style.display = 'none'} />
             </div>
             <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-              <div className="eyebrow" style={{ marginBottom: 12 }}>{t("news.firstDay")}</div>
-              <h3 className="display" style={{ fontSize: 32, marginBottom: 14 }}>{t("news.firstTitle")}</h3>
+              <div className="eyebrow" style={{ marginBottom: 12 }}>{t("news.featured")}</div>
+              <h3 className="display" style={{ fontSize: 32, marginBottom: 14 }}>{featured.date}</h3>
               <p style={{ color: "var(--ink-2)", lineHeight: 1.6 }}>
-                {t("news.firstLead")}
+                {t(`newsItems.${featuredIndex}`)}
               </p>
             </div>
           </div>

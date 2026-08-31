@@ -285,6 +285,7 @@ window.PUBLICATIONS = [
 ];
 
 window.NEWS = [
+  { date: "Aug 31, 2026", body: "Welcome Dongyang and Qidong to the AI4FH Lab.", image: "images/welcome-dongyang-qidong.jpg" },
   { date: "Jun 2025", body: "AI4FH Lab is established at UCD. We are open for PhD, MSc, and postdoc inquiries." },
 ];
 
@@ -381,9 +382,7 @@ window.I18N = {
       eyebrow: "News",
       title: "News",
       lead: "Updates from the lab.",
-      firstDay: "The first day",
-      firstTitle: "June 2025 — AI4FH is established at UCD.",
-      firstLead: "The lab opened its doors in summer 2025 within the School of Biosystems & Food Engineering. We are now recruiting students and collaborators across the AI–food–health interface.",
+      featured: "Latest from the lab",
     },
     join: {
       eyebrow: "Open positions",
@@ -445,6 +444,7 @@ window.I18N = {
       "Comprehensive evaluation and comparison of machine learning methods for QSAR modeling of antioxidant tripeptides.",
     ],
     newsItems: [
+      "Welcome Dongyang and Qidong to the AI4FH Lab.",
       "AI4FH Lab is established at UCD. We are open for PhD, MSc, and postdoc inquiries.",
     ],
   },
@@ -530,9 +530,7 @@ window.I18N = {
       eyebrow: "动态",
       title: "动态",
       lead: "实验室最新消息。",
-      firstDay: "第一天",
-      firstTitle: "2025 年 6 月 — AI4FH 实验室在 UCD 成立。",
-      firstLead: "实验室于 2025 年夏季在生物系统与食品工程学院成立。我们正在招收学生，并欢迎 AI、食品与健康交叉领域的合作。",
+      featured: "实验室最新动态",
     },
     join: {
       eyebrow: "开放职位",
@@ -594,6 +592,7 @@ window.I18N = {
       "对抗氧化三肽 QSAR 建模中的多种机器学习方法进行系统评估和比较。",
     ],
     newsItems: [
+      "欢迎 Dongyang 和 Qidong 加入 AI4FH 实验室。",
       "AI4FH 实验室在 UCD 成立。我们开放 PhD、MSc 和博士后咨询。",
     ],
   },
