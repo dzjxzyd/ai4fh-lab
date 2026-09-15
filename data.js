@@ -285,6 +285,7 @@ window.PUBLICATIONS = [
 ];
 
 window.NEWS = [
+  { date: "Sep 11, 2026", body: "AI4FH Lab held an interdisciplinary AI workshop with Dr. Wanling Cai’s group at UCD, exchanging ideas on AI applications in bioactive compounds, biomanufacturing, and human–computer interaction. We rounded off the day with dinner at King Skewer." },
   { date: "Aug 31, 2026", body: "Welcome Dongyang and Qidong to the AI4FH Lab.", image: "images/welcome-dongyang-qidong.jpg" },
   { date: "Jun 2025", body: "AI4FH Lab is established at UCD. We are open for PhD, MSc, and postdoc inquiries.", image: "images/first.jpg" },
 ];
@@ -453,6 +454,7 @@ window.I18N = {
       "Comprehensive evaluation and comparison of machine learning methods for QSAR modeling of antioxidant tripeptides.",
     ],
     newsItems: [
+      "AI4FH Lab held an interdisciplinary AI workshop with Dr. Wanling Cai’s group at UCD, exchanging ideas on AI applications in bioactive compounds, biomanufacturing, and human–computer interaction. We rounded off the day with dinner at King Skewer.",
       "Welcome Dongyang and Qidong to the AI4FH Lab.",
       "AI4FH Lab is established at UCD. We are open for PhD, MSc, and postdoc inquiries.",
     ],
@@ -615,6 +617,7 @@ window.I18N = {
       "对抗氧化三肽 QSAR 建模中的多种机器学习方法进行系统评估和比较。",
     ],
     newsItems: [
+      "AI4FH 实验室与 Wanling Cai 博士团队在 UCD 举行了一次 AI 跨学科应用 workshop，交流了 AI 在生物活性化合物、生物制造和人机交互中的应用。活动结束后，大家在 King Skewer 聚餐。",
       "欢迎 Dongyang 和 Qidong 加入 AI4FH 实验室。",
       "AI4FH 实验室在 UCD 成立。我们开放 PhD、MSc 和博士后咨询。",
     ],

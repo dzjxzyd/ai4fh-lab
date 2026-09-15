@@ -219,7 +219,7 @@ function PagePublications({ t }) {
 }
 
 function PageNews({ t }) {
-  const featured = window.NEWS[0];
+  const featured = window.NEWS.find((item) => item.image) || window.NEWS[0];
   const featuredIndex = window.NEWS.indexOf(featured);
   const gallery = window.NEWS_GALLERY || window.NEWS.filter((item) => item.image);
   return (
