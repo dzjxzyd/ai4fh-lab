@@ -109,7 +109,7 @@ window.PEOPLE = [
   {
     name: "Almog Swisa",
     role: "MSc Student",
-    note: "Technion – Israel Institute of Technology",
+    note: "BSc in Biotechnology and Food Engineering, Technion – Israel Institute of Technology",
     photo: null,
     extra: "",
     initials: "AS",
