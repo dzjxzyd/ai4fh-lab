@@ -93,7 +93,7 @@ window.PEOPLE = [
   {
     name: "David Regan",
     role: "MSc Student",
-    note: "B.E. Civil Engineering, University College Dublin, 1985",
+    note: "B.E. Civil Engineering, University College Dublin",
     photo: null,
     extra: "",
     initials: "DR",
@@ -101,9 +101,9 @@ window.PEOPLE = [
   {
     name: "Yu-Chi HUANG",
     role: "MSc Student",
-    note: "M.Eng. Chemical and Materials, National Yunlin University of Science and Technology, Sep 2015 – Jun 2017",
+    note: "M.Eng. Chemical and Materials, National Yunlin University of Science and Technology",
     photo: null,
-    extra: "B.Eng. Chemical and Materials, Chinese Culture University, Sep 2011 – Jun 2015",
+    extra: "B.Eng. Chemical and Materials, Chinese Culture University",
     initials: "YH",
   },
   {
