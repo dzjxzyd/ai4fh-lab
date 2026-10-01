@@ -93,7 +93,7 @@ window.PEOPLE = [
   {
     name: "David Regan",
     role: "MSc Student",
-    note: "B.E. Civil Engineering, University College Dublin",
+    note: "B.E. University College Dublin",
     photo: null,
     extra: "",
     initials: "DR",
@@ -101,15 +101,15 @@ window.PEOPLE = [
   {
     name: "Yu-Chi HUANG",
     role: "MSc Student",
-    note: "M.Eng. Chemical and Materials, National Yunlin University of Science and Technology",
+    note: "M.E. National Yunlin University of Science and Technology",
     photo: null,
-    extra: "B.Eng. Chemical and Materials, Chinese Culture University",
+    extra: "B.E. Chinese Culture University",
     initials: "YH",
   },
   {
     name: "Almog Swisa",
     role: "MSc Student",
-    note: "BSc in Biotechnology and Food Engineering, Technion – Israel Institute of Technology",
+    note: "B.S. Technion – Israel Institute of Technology",
     photo: null,
     extra: "",
     initials: "AS",
