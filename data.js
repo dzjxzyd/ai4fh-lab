@@ -309,12 +309,15 @@ window.PUBLICATIONS = [
 ];
 
 window.NEWS = [
+  { date: "Oct 11, 2026", body: "AI4FH Lab has a new logo! Explore the white-on-black and transparent wordmark versions below, with original SVG and PNG files available to download.", image: "images/logos/AI4FH_white_on_black.svg", imageFit: "contain", imageBackground: "#000" },
   { date: "Sep 11, 2026", body: "AI4FH Lab held an interdisciplinary AI workshop with Dr. Wanling Cai’s group at UCD, exchanging ideas on AI applications in bioactive compounds, biomanufacturing, and human–computer interaction. We rounded off the day with dinner at King Skewer." },
   { date: "Aug 31, 2026", body: "Welcome Dongyang and Qidong to the AI4FH Lab.", image: "images/welcome-dongyang-qidong.jpg" },
   { date: "Jun 2025", body: "AI4FH Lab is established at UCD. We are open for PhD, MSc, and postdoc inquiries.", image: "images/first.jpg" },
 ];
 
 window.NEWS_GALLERY = [
+  { date: "Oct 11, 2026", image: "images/logos/AI4FH_white_on_black.svg", imageFit: "contain", imageBackground: "#000", downloads: [{ label: "SVG", href: "images/logos/AI4FH_white_on_black.svg" }, { label: "PNG", href: "images/logos/AI4FH_white_on_black.png" }] },
+  { date: "Oct 11, 2026", image: "images/logos/AI4FH_wordmark.svg", imageFit: "contain", imageBackground: "#fff", downloads: [{ label: "SVG", href: "images/logos/AI4FH_wordmark.svg" }, { label: "PNG", href: "images/logos/AI4FH_wordmark_transparent.png" }] },
   { date: "Aug 31, 2026", image: "images/welcome-dongyang-qidong.jpg" },
   { date: "Jun 2025", image: "images/first.jpg" },
 ];
@@ -478,11 +481,14 @@ window.I18N = {
       "Comprehensive evaluation and comparison of machine learning methods for QSAR modeling of antioxidant tripeptides.",
     ],
     newsItems: [
+      "AI4FH Lab has a new logo! Explore the white-on-black and transparent wordmark versions below, with original SVG and PNG files available to download.",
       "AI4FH Lab held an interdisciplinary AI workshop with Dr. Wanling Cai’s group at UCD, exchanging ideas on AI applications in bioactive compounds, biomanufacturing, and human–computer interaction. We rounded off the day with dinner at King Skewer.",
       "Welcome Dongyang and Qidong to the AI4FH Lab.",
       "AI4FH Lab is established at UCD. We are open for PhD, MSc, and postdoc inquiries.",
     ],
     galleryItems: [
+      { title: "Our new logo · White on black", caption: "The AI4FH wordmark in white on a black background. Download the original files below." },
+      { title: "Our new logo · Transparent wordmark", caption: "The AI4FH wordmark in black on a transparent background, shown here on white. Download the original files below." },
       {
         title: "Welcome Dongyang and Qidong",
         caption: "Dongyang and Qidong join the AI4FH Lab.",
@@ -641,11 +647,14 @@ window.I18N = {
       "对抗氧化三肽 QSAR 建模中的多种机器学习方法进行系统评估和比较。",
     ],
     newsItems: [
+      "AI4FH 实验室有了新的 logo！下方展示黑底白字与透明底黑字两个版本，并提供 SVG 和 PNG 原文件下载。",
       "AI4FH 实验室与 Wanling Cai 博士团队在 UCD 举行了一次 AI 跨学科应用 workshop，交流了 AI 在生物活性化合物、生物制造和人机交互中的应用。活动结束后，大家在 King Skewer 聚餐。",
       "欢迎 Dongyang 和 Qidong 加入 AI4FH 实验室。",
       "AI4FH 实验室在 UCD 成立。我们开放 PhD、MSc 和博士后咨询。",
     ],
     galleryItems: [
+      { title: "新 logo · 黑底白字", caption: "黑色背景上的白色 AI4FH 标识。可在下方下载原文件。" },
+      { title: "新 logo · 透明底黑字", caption: "透明背景的黑色 AI4FH 标识，此处使用白色背景展示。可在下方下载原文件。" },
       {
         title: "欢迎 Dongyang 和 Qidong",
         caption: "Dongyang 和 Qidong 加入 AI4FH 实验室。",

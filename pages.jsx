@@ -229,8 +229,8 @@ function PageNews({ t }) {
           <SectionHeader eyebrow={t("news.eyebrow")} title={t("news.title")} lead={t("news.lead")} />
 
           <div style={{ marginTop: 20, display: "grid", gap: 28, alignItems: "stretch" }} className="news-featured news-images">
-            <div className="placeholder-img" style={{ aspectRatio: "16 / 10", minHeight: 320, minWidth: 0 }}>
-              <img src={featured.image} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 6 }} onError={(e) => e.target.style.display = 'none'} />
+            <div className="placeholder-img" style={{ aspectRatio: "16 / 10", minHeight: 320, minWidth: 0, background: featured.imageBackground }}>
+              <img src={featured.image} alt="" style={{ width: "100%", height: "100%", objectFit: featured.imageFit || "cover", borderRadius: 6 }} onError={(e) => e.target.style.display = 'none'} />
             </div>
             <div className="card" style={{ display: "flex", flexDirection: "column", justifyContent: "center", minWidth: 0 }}>
               <div className="eyebrow" style={{ marginBottom: 12 }}>{t("news.featured")}</div>
@@ -257,13 +257,16 @@ function PageNews({ t }) {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 18, marginTop: 26 }}>
               {gallery.map((item, i) => (
                 <figure key={`${item.date}-${item.image}`} className="cell" style={{ margin: 0, padding: 0, overflow: "hidden" }}>
-                  <div className="placeholder-img" style={{ aspectRatio: "4 / 3", border: "none" }}>
-                    <img src={item.image} alt={t(`galleryItems.${i}.title`)} style={{ width: "100%", height: "100%", objectFit: "cover" }} onError={(e) => e.target.style.display = 'none'} />
+                  <div className="placeholder-img" style={{ aspectRatio: "4 / 3", border: "none", background: item.imageBackground }}>
+                    <img src={item.image} alt={t(`galleryItems.${i}.title`)} style={{ width: "100%", height: "100%", objectFit: item.imageFit || "cover" }} onError={(e) => e.target.style.display = 'none'} />
                   </div>
                   <figcaption style={{ padding: "18px 18px 20px" }}>
                     <div style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--neon)", marginBottom: 8 }}>{item.date}</div>
                     <div style={{ fontSize: 20, fontFamily: "var(--font-display)", marginBottom: 8 }}>{t(`galleryItems.${i}.title`)}</div>
                     <div style={{ color: "var(--ink-3)", lineHeight: 1.55 }}>{t(`galleryItems.${i}.caption`)}</div>
+                    {item.downloads && <div style={{ display: "flex", gap: 18, marginTop: 14 }}>
+                      {item.downloads.map((file) => <a key={file.href} className="link" href={file.href} download>{file.label} ↓</a>)}
+                    </div>}
                   </figcaption>
                 </figure>
               ))}
