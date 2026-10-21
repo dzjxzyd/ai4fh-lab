@@ -58,6 +58,12 @@ window.PILLARS = [
   },
   {
     n: "05",
+    title: "Alternative Protein",
+    body: "Mining large-scale data and using AI to predict the techno-functional properties of alternative proteins for food applications.",
+    tags: ["Data mining", "Techno-functional properties"],
+  },
+  {
+    n: "06",
     title: "Agri-Valorization",
     body: "Converting agricultural waste into high-value functional ingredients through AI-optimized processes.",
     tags: ["Impact", "Circular food"],
@@ -370,7 +376,7 @@ window.I18N = {
       statEstablished: "Established",
       research: "Research",
       researchDirections: "Research directions",
-      researchLead: "Five active threads at the AI–food–health interface.",
+      researchLead: "Six active threads at the AI–food–health interface.",
       seeAllResearch: "See all research →",
       openSource: "Open source",
       modelsTitle: "Models &amp; webservers from the lab",
@@ -385,7 +391,7 @@ window.I18N = {
     research: {
       eyebrow: "Research",
       title: "Research",
-      lead: "Five threads — bioactive discovery, smart biomanufacturing, foundation models, broader AI for science, and agri-valorization for downstream impact.",
+      lead: "Six threads — bioactive discovery, smart biomanufacturing, foundation models, broader AI for science, alternative proteins, and agri-valorization.",
       openSource: "Open source",
       modelsTitle: "Models, benchmarks, and webservers",
     },
@@ -470,6 +476,7 @@ window.I18N = {
       { title: "Smart Biomanufacturing", body: "Leveraging AI for rational experimental design in fermentation and biomanufacturing." },
       { title: "Large language models for AI4Science", body: "Building lightweight pre-trained models for proteins, peptides, and microbial communities — small enough to fine-tune and serve." },
       { title: "AI for Science", body: "Applying LLMs and deep learning across food chemistry, nutritional science, and biochemistry." },
+      { title: "Alternative Protein", body: "Mining large-scale data and using AI to predict the techno-functional properties of alternative proteins for food applications." },
       { title: "Agri-Valorization", body: "Converting agricultural waste into high-value functional ingredients through AI-optimized processes." },
     ],
     projects: [
@@ -537,7 +544,7 @@ window.I18N = {
       statEstablished: "成立时间",
       research: "研究",
       researchDirections: "研究方向",
-      researchLead: "围绕 AI、食品与健康交叉界面的五个活跃方向。",
+      researchLead: "围绕 AI、食品与健康交叉界面的六个活跃方向。",
       seeAllResearch: "查看全部研究 →",
       openSource: "开源",
       modelsTitle: "实验室模型与 Web 服务",
@@ -552,7 +559,7 @@ window.I18N = {
     research: {
       eyebrow: "研究",
       title: "研究",
-      lead: "五条研究主线：生物活性发现、智能生物制造、基础模型、更广义的 AI for Science，以及面向产业影响的农业副产物高值化。",
+      lead: "六条研究主线：生物活性发现、智能生物制造、基础模型、更广义的 AI for Science、替代蛋白，以及农业副产物高值化。",
       openSource: "开源",
       modelsTitle: "模型、基准与 Web 服务",
     },
@@ -637,6 +644,7 @@ window.I18N = {
       { title: "智能生物制造", body: "利用 AI 进行发酵和生物制造中的理性实验设计。" },
       { title: "AI4Science 大语言模型", body: "构建面向蛋白质、肽和微生物群落的轻量预训练模型，便于微调和部署。" },
       { title: "AI for Science", body: "将 LLM 和深度学习应用于食品化学、营养科学和生物化学。" },
+      { title: "替代蛋白", body: "通过大规模数据挖掘与 AI 建模，预测替代蛋白的技术功能特性，支持其在食品中的应用。" },
       { title: "农业副产物高值化", body: "通过 AI 优化流程，将农业废弃物转化为高价值功能性配料。" },
     ],
     projects: [

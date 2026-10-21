@@ -21,9 +21,14 @@ const PILLAR_ICONS = {
       <ellipse cx="12" cy="12" rx="10" ry="4" /><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)" /><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)" /><circle cx="12" cy="12" r="1.2" fill="currentColor" />
     </svg>,
 
-  "05":
+  "06":
   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" /><path d="M2 21c0-3 1.85-5.36 5.08-6" />
+    </svg>,
+
+  "05":
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="6" cy="6" r="3" /><circle cx="18" cy="6" r="3" /><circle cx="12" cy="18" r="3" /><path d="M9 6h6M7.5 8.6l3 6.8M16.5 8.6l-3 6.8" />
     </svg>
 
 };
@@ -149,13 +154,12 @@ function PageHome({ onNavigate, t }) {
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
               {window.PILLARS.map((p, i) => {
-                const isImpact = i === window.PILLARS.length - 1;
+                const isImpact = p.n === "06";
                 return (
                   <div
                     key={p.n}
                     className="cell"
                     style={{
-                      gridColumn: isImpact ? "1 / -1" : "auto",
                       background: isImpact ? "var(--paper-3)" : undefined,
                       borderColor: isImpact ? "var(--rule)" : undefined,
                       paddingTop: 28
