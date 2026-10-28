@@ -98,7 +98,7 @@ function PageHome({ onNavigate, t }) {
       <section className="home-hero">
         <div className="hero-bg" aria-hidden="true" />
         <div className="container hero-content">
-          <div className="eyebrow hero-eyebrow">01 / AI4FH LAB · UCD</div>
+          <div className="eyebrow hero-eyebrow">AI4FH LAB · UCD</div>
           <h1 className="display hero-title">
             {t("home.heroTitleA")} <Typewriter key={t("home.heroPhrase")} text={t("home.heroPhrase")} />
           </h1>
