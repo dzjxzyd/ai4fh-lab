@@ -365,6 +365,7 @@ window.I18N = {
     home: {
       heroTitleA: "AI for",
       heroFood: "food",
+      heroPhrase: "food and health",
       heroTitleB: "and",
       heroHealth: "health",
       heroLead: "We work on bioactive compound discovery, smart biomanufacturing, and large language models — releasing open-source code and public webservers, alongside wet-lab collaborations.",
@@ -379,7 +380,7 @@ window.I18N = {
       researchLead: "Six active threads at the AI–food–health interface.",
       seeAllResearch: "See all research →",
       openSource: "Open source",
-      modelsTitle: "Models &amp; webservers from the lab",
+      modelsTitle: "Models & webservers from the lab",
       webserver: "WEBSERVER",
       news: "News",
       allUpdates: "All updates →",
@@ -533,6 +534,7 @@ window.I18N = {
     home: {
       heroTitleA: "AI 赋能",
       heroFood: "食品",
+      heroPhrase: "食品与健康",
       heroTitleB: "与",
       heroHealth: "健康",
       heroLead: "我们面向生物活性化合物发现、智能生物制造和大语言模型开展研究，同时发布开源代码和公共 Web 服务，并与湿实验团队紧密合作。",

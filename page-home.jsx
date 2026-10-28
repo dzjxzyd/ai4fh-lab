@@ -52,47 +52,41 @@ function useCountUp(target, duration = 1400) {
   return value;
 }
 
-function Typewriter({ text, delay = 0, speed = 45 }) {
-  const [count, setCount] = React.useState(0);
-
+// Remember completed phrases across in-app navigation; a fresh page load plays once.
+const typedHeroPhrases = new Set();
+function Typewriter({ text, delay = 350, speed = 85 }) {
+  const [count, setCount] = React.useState(() =>
+    typedHeroPhrases.has(text) || window.matchMedia("(prefers-reduced-motion: reduce)").matches ? text.length : 0);
   React.useEffect(() => {
-    setCount(0);
-    let interval;
-    const start = setTimeout(() => {
-      interval = setInterval(() => {
-        setCount((current) => {
-          if (current >= text.length) {
-            clearInterval(interval);
-            return current;
-          }
-          return current + 1;
-        });
-      }, speed);
-    }, delay);
-
-    return () => {
-      clearTimeout(start);
-      clearInterval(interval);
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let timer;
+    let current = 0;
+    const finish = () => {
+      clearTimeout(timer);
+      typedHeroPhrases.add(text);
+      setCount(text.length);
     };
+    const tick = () => {
+      current += 1;
+      setCount(current);
+      if (current < text.length) timer = setTimeout(tick, speed);
+      else typedHeroPhrases.add(text);
+    };
+    if (motion.matches || typedHeroPhrases.has(text)) finish();
+    else { setCount(0); timer = setTimeout(tick, delay); }
+    const onMotion = () => { if (motion.matches) finish(); };
+    motion.addEventListener("change", onMotion);
+    return () => { clearTimeout(timer); motion.removeEventListener("change", onMotion); };
   }, [text, delay, speed]);
-
-  const done = count >= text.length;
-
   return (
-    <span>
-      {text.slice(0, count)}
-      <span
-        style={{
-          display: "inline-block",
-          width: "0.55ch",
-          height: "0.9em",
-          background: "var(--accent)",
-          marginLeft: 2,
-          verticalAlign: "-0.08em",
-          boxShadow: "0 0 12px var(--accent-glow)",
-          animation: done ? "livePulse 1s steps(2) infinite" : "none",
-        }}
-      />
+    <span className="hero-typewriter" aria-label={text}>
+      <span aria-hidden="true">
+        {Array.from(text).map((letter, i) => (
+          <span key={i} className={`typed-character ${i < count ? "is-visible" : ""}`}>
+            {letter}{i === Math.max(0, count - 1) && <span className="typing-cursor" />}
+          </span>
+        ))}
+      </span>
     </span>
   );
 }
@@ -101,33 +95,37 @@ function PageHome({ onNavigate, t }) {
   return (
     <div className="page">
       {/* HERO */}
-      <section style={{ position: "relative", paddingTop: 96, paddingBottom: 96, overflow: "hidden" }}>
-        <div className="hero-bg" aria-hidden></div>
-        <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 64, alignItems: "end" }} className="hero-grid">
-            <div>
-              <h1 className="display" style={{ fontSize: "clamp(56px, 9vw, 132px)", letterSpacing: "-0.025em" }}>
-                {t("home.heroTitleA")} <span style={{ color: "var(--accent)" }}>{t("home.heroFood")}</span><br />
-                {t("home.heroTitleB")} <Typewriter text={t("home.heroHealth")} delay={700} speed={120} />
-              </h1>
-              <p style={{ fontSize: 19, color: "var(--ink-2)", maxWidth: 560, marginTop: 28, textWrap: "pretty", lineHeight: 1.55 }}>{t("home.heroLead")}
-
-              </p>
-              <div style={{ display: "flex", gap: 12, marginTop: 36, flexWrap: "wrap" }}>
+      <section className="home-hero">
+        <div className="hero-bg" aria-hidden="true" />
+        <div className="container hero-content">
+          <div className="eyebrow hero-eyebrow">01 / AI4FH LAB · UCD</div>
+          <h1 className="display hero-title">
+            {t("home.heroTitleA")} <Typewriter key={t("home.heroPhrase")} text={t("home.heroPhrase")} />
+          </h1>
+          <div className="hero-body">
+            <div className="hero-copy">
+              <p className="hero-lead">{t("home.heroLead")}</p>
+              <div className="hero-actions">
                 <button className="btn btn-primary" onClick={() => onNavigate("research")}>{t("home.readResearch")}</button>
                 <button className="btn btn-ghost" onClick={() => onNavigate("join")}>{t("home.joinLab")}</button>
               </div>
             </div>
-            <div>
-              <div className="mono" style={{ marginBottom: 16, color: "var(--ink-3)", fontSize: 15, display: "flex", alignItems: "center" }}>
-                <span className="live-dot"></span>{t("home.labIndex")}
+            <div className="hero-visual">
+              <div className="logo-field" aria-hidden="true">
+                <svg className="logo-network" viewBox="0 0 480 240" fill="none">
+                  <path d="M18 170L72 60L180 30L310 42L436 80L462 184L354 214L184 208L18 170M72 60L184 208M310 42L354 214" />
+                  {[[18,170],[72,60],[180,30],[310,42],[436,80],[462,184],[354,214],[184,208]].map(([cx,cy],i) =>
+                    <circle key={i} cx={cx} cy={cy} r="2.5" style={{animationDelay: `${i * 0.35}s`}} />)}
+                </svg>
               </div>
-              <div style={{ display: "grid", gap: 0 }}>
-                <Stat k={t("home.statModels")} v="7+" />
-                <Stat k={t("home.statPublished")} v="20+" />
-                <Stat k={t("home.statEstablished")} v={window.LAB.founded} />
-              </div>
+              <img className="hero-logo" src="images/logos/AI4FH_white_transparent.svg" width="1949" height="498" alt="AI4FH" />
             </div>
+          </div>
+          <div className="hero-metrics">
+            <div className="mono hero-status"><span className="live-dot" />{t("home.labIndex")}</div>
+            <div className="hero-stat"><strong>7+</strong><span dangerouslySetInnerHTML={{ __html: t("home.statModels") }} /></div>
+            <div className="hero-stat"><strong>20+</strong><span dangerouslySetInnerHTML={{ __html: t("home.statPublished") }} /></div>
+            <div className="hero-stat"><strong>{window.LAB.founded}</strong><span>{t("home.statEstablished")}</span></div>
           </div>
         </div>
       </section>

@@ -8,7 +8,7 @@ function TopBar({ active, onNavigate, lang, setLang, t }) {
     <header className="topbar">
       <div className="container topbar-inner">
         <a className="brand" href="#home" onClick={(e) => { e.preventDefault(); onNavigate("home"); setOpen(false); }}>
-          <span className="brand-mark">AI4FH<span className="dot">.</span></span>
+          <img className="brand-logo" src="images/logos/AI4FH_white_transparent.svg" width="1949" height="498" alt="AI4FH" />
           <span className="brand-sub">Lab · UCD</span>
         </a>
         <nav className={`nav ${open ? "open" : ""}`}>
