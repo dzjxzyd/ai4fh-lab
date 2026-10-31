@@ -399,7 +399,6 @@ window.I18N = {
     people: {
       eyebrow: "People",
       title: "People",
-      lead: "The lab is led by Zhenjiao Du, with members from food chemistry, food engineering, microbiology, pharmacy, and machine learning backgrounds.",
       pi: "Principal Investigator",
       groupMembers: "Group members",
       partner: "Lab partner for life",
@@ -568,7 +567,6 @@ window.I18N = {
     people: {
       eyebrow: "团队",
       title: "团队",
-      lead: "实验室由 Zhenjiao Du 领导，成员背景涵盖食品化学、食品工程、微生物学、药学和机器学习。",
       pi: "课题组负责人",
       groupMembers: "团队成员",
       partner: "终身实验室伙伴",
