@@ -194,7 +194,7 @@ function PageHome({ onNavigate, t }) {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
             {window.PROJECTS.map((p, i) =>
             <a key={p.name} href={p.href} target="_blank" rel="noopener" className="cell" style={{ display: "block", textDecoration: "none" }}>
-                <div className="cell-tag">{String(i + 1).padStart(2, "0")} / OS</div>
+                <div className="cell-tag">{String(i + 1).padStart(2, "0")}</div>
                 <div className="cell-num">↗</div>
                 <div style={{ marginTop: 56, display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 12, marginBottom: 10 }}>
                   <div style={{ fontSize: 24, fontFamily: "var(--font-display)" }}>{p.name}</div>
