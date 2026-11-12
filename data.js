@@ -316,6 +316,7 @@ window.PUBLICATIONS = [
 
 // Keep News newest first. Short bilingual headlines also appear in the homepage Latest strip.
 window.NEWS = [
+  {"date": "Nov 12, 2026", "headline": {"en": "PepBERT poster at EFFoST 2026", "zh": "EFFoST 2026 · PepBERT 海报"}, "body": "AI4FH Lab presented “PepBERT: Lightweight language models for bioactive peptide representation” at EFFoST 2026. Our poster introduces compact, peptide-focused language models for efficient bioactive peptide representation and prediction. The photo captures the PepBERT poster on display at the conference.", "image": "images/effost-2026-pepbert-poster.jpg", "imageFit": "contain", "imageAspectRatio": "3 / 4", "imageBackground": "#101818"},
   { date: "Oct 11, 2026", headline: { en: "New AI4FH logo", zh: "AI4FH 全新 Logo" }, body: "AI4FH Lab has a new logo! Explore the white-on-black, transparent black, and transparent white wordmark versions below, with original SVG and PNG files available to download.", image: "images/logos/AI4FH_white_on_black.svg", imageFit: "contain", imageBackground: "#000" },
   { date: "Sep 11, 2026", headline: { en: "Interdisciplinary AI workshop", zh: "跨学科 AI Workshop" }, body: "AI4FH Lab held an interdisciplinary AI workshop with Dr. Wanling Cai’s group at UCD, exchanging ideas on AI applications in bioactive compounds, biomanufacturing, and human–computer interaction. We rounded off the day with dinner at King Skewer." },
   { date: "Aug 31, 2026", headline: { en: "Welcome Dongyang & Qidong", zh: "欢迎 Dongyang 与 Qidong" }, body: "Welcome Dongyang and Qidong to the AI4FH Lab.", image: "images/welcome-dongyang-qidong.jpg" },
@@ -330,6 +331,7 @@ window.getLatestNews = function (lang = "en") {
 };
 
 window.NEWS_GALLERY = [
+  {"date": "Nov 12, 2026", "image": "images/effost-2026-pepbert-poster.jpg", "imageFit": "contain", "imageBackground": "#101818"},
   { date: "Oct 11, 2026", image: "images/logos/AI4FH_white_on_black.svg", imageFit: "contain", imageBackground: "#000", downloads: [{ label: "SVG", href: "images/logos/AI4FH_white_on_black.svg" }, { label: "PNG", href: "images/logos/AI4FH_white_on_black.png" }] },
   { date: "Oct 11, 2026", image: "images/logos/AI4FH_wordmark.svg", imageFit: "contain", imageBackground: "#fff", downloads: [{ label: "SVG", href: "images/logos/AI4FH_wordmark.svg" }, { label: "PNG", href: "images/logos/AI4FH_wordmark_transparent.png" }] },
   { date: "Oct 12, 2026", image: "images/logos/AI4FH_white_transparent.svg", imageFit: "contain", imageBackground: "#162025", downloads: [{ label: "SVG", href: "images/logos/AI4FH_white_transparent.svg" }, { label: "PNG", href: "images/logos/AI4FH_white_transparent.png" }] },
@@ -510,12 +512,14 @@ window.I18N = {
       "Comprehensive evaluation and comparison of machine learning methods for QSAR modeling of antioxidant tripeptides.",
     ],
     newsItems: [
+      "AI4FH Lab presented “PepBERT: Lightweight language models for bioactive peptide representation” at EFFoST 2026. Our poster introduces compact, peptide-focused language models for efficient bioactive peptide representation and prediction. The photo captures the PepBERT poster on display at the conference.",
       "AI4FH Lab has a new logo! Explore the white-on-black, transparent black, and transparent white wordmark versions below, with original SVG and PNG files available to download.",
       "AI4FH Lab held an interdisciplinary AI workshop with Dr. Wanling Cai’s group at UCD, exchanging ideas on AI applications in bioactive compounds, biomanufacturing, and human–computer interaction. We rounded off the day with dinner at King Skewer.",
       "Welcome Dongyang and Qidong to the AI4FH Lab.",
       "AI4FH Lab is established at UCD. We are open for PhD, MSc, and postdoc inquiries.",
     ],
     galleryItems: [
+      { title: "PepBERT at EFFoST 2026", caption: "Our PepBERT poster on display at EFFoST 2026, presenting lightweight language models for bioactive peptide representation." },
       { title: "Our new logo · White on black", caption: "The AI4FH wordmark in white on a black background. Download the original files below." },
       { title: "Our new logo · Transparent wordmark", caption: "The AI4FH wordmark in black on a transparent background, shown here on white. Download the original files below." },
       { title: "Our new logo · Transparent white wordmark", caption: "The AI4FH wordmark in white on a transparent background, shown here on a dark background. Download the original files below." },
@@ -691,12 +695,14 @@ window.I18N = {
       "对抗氧化三肽 QSAR 建模中的多种机器学习方法进行系统评估和比较。",
     ],
     newsItems: [
+      "AI4FH 实验室在 EFFoST 2026 展示了海报“PepBERT: Lightweight language models for bioactive peptide representation”。这项工作开发了面向肽序列的轻量语言模型，支持高效的生物活性肽表示与预测。照片记录了 PepBERT 海报在会议现场的展示。",
       "AI4FH 实验室有了新的 logo！下方展示黑底白字、透明底黑字和透明底白字三个版本，并提供 SVG 和 PNG 原文件下载。",
       "AI4FH 实验室与 Wanling Cai 博士团队在 UCD 举行了一次 AI 跨学科应用 workshop，交流了 AI 在生物活性化合物、生物制造和人机交互中的应用。活动结束后，大家在 King Skewer 聚餐。",
       "欢迎 Dongyang 和 Qidong 加入 AI4FH 实验室。",
       "AI4FH 实验室在 UCD 成立。我们开放 PhD、MSc 和博士后咨询。",
     ],
     galleryItems: [
+      { title: "EFFoST 2026 · PepBERT 海报", caption: "AI4FH 在 EFFoST 2026 展示 PepBERT：用于生物活性肽表示的轻量语言模型。" },
       { title: "新 logo · 黑底白字", caption: "黑色背景上的白色 AI4FH 标识。可在下方下载原文件。" },
       { title: "新 logo · 透明底黑字", caption: "透明背景的黑色 AI4FH 标识，此处使用白色背景展示。可在下方下载原文件。" },
       { title: "新 logo · 透明底白字", caption: "透明背景的白色 AI4FH 标识，此处使用深色背景展示。可在下方下载原文件。" },

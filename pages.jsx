@@ -218,7 +218,7 @@ function PagePublications({ t }) {
   );
 }
 
-function PageNews({ t }) {
+function PageNews({ t, lang }) {
   const featured = window.NEWS.find((item) => item.image) || window.NEWS[0];
   const featuredIndex = window.NEWS.indexOf(featured);
   const gallery = window.NEWS_GALLERY || window.NEWS.filter((item) => item.image);
@@ -229,9 +229,9 @@ function PageNews({ t }) {
           <SectionHeader eyebrow={t("news.eyebrow")} title={t("news.title")} lead={t("news.lead")} />
 
           <div style={{ marginTop: 20, display: "grid", gap: 28, alignItems: "stretch" }} className="news-featured news-images">
-            <div className="placeholder-img" style={{ aspectRatio: "16 / 10", minHeight: 320, minWidth: 0, background: featured.imageBackground }}>
-              <img src={featured.image} alt="" style={{ width: "100%", height: "100%", objectFit: featured.imageFit || "cover", borderRadius: 6 }} onError={(e) => e.target.style.display = 'none'} />
-            </div>
+            <a className="placeholder-img" href={featured.image} target="_blank" rel="noopener" style={{ display: "block", aspectRatio: featured.imageAspectRatio || "16 / 10", minHeight: 320, minWidth: 0, background: featured.imageBackground }}>
+              <img src={featured.image} alt={featured.headline?.[lang] || featured.headline?.en || ""} style={{ width: "100%", height: "100%", objectFit: featured.imageFit || "cover", borderRadius: 6 }} onError={(e) => e.target.style.display = 'none'} />
+            </a>
             <div className="card" style={{ display: "flex", flexDirection: "column", justifyContent: "center", minWidth: 0 }}>
               <div className="eyebrow" style={{ marginBottom: 12 }}>{t("news.featured")}</div>
               <h3 className="display" style={{ fontSize: 34, marginBottom: 14 }}>{featured.date}</h3>
