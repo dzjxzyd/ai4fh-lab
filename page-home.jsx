@@ -91,7 +91,8 @@ function Typewriter({ text, delay = 350, speed = 85 }) {
   );
 }
 
-function PageHome({ onNavigate, t }) {
+function PageHome({ onNavigate, t, lang }) {
+  const latestNews = window.getLatestNews(lang);
   return (
     <div className="page">
       {/* HERO */}
@@ -121,6 +122,14 @@ function PageHome({ onNavigate, t }) {
               <img className="hero-logo" src="images/logos/AI4FH_white_transparent.svg" width="1949" height="498" alt="AI4FH" />
             </div>
           </div>
+          {latestNews && <aside className="hero-latest" aria-label={t("home.spotlight.eyebrow")}>
+            <span className="hero-latest-label">{t("home.spotlight.eyebrow")}</span>
+            <div className="hero-latest-copy">
+              <span className="hero-latest-title">{latestNews.headline}</span>
+              <span className="hero-latest-note">{latestNews.date}</span>
+            </div>
+            <a className="hero-latest-link" href="#news" onClick={(event) => { event.preventDefault(); onNavigate("news"); }}>{t("home.spotlight.button")} <span aria-hidden="true">↗</span></a>
+          </aside>}
           <div className="hero-metrics">
             <div className="mono hero-status"><span className="live-dot" />{t("home.labIndex")}</div>
             <div className="hero-stat"><strong>7+</strong><span dangerouslySetInnerHTML={{ __html: t("home.statModels") }} /></div>
@@ -130,51 +139,26 @@ function PageHome({ onNavigate, t }) {
         </div>
       </section>
 
-      {/* RESEARCH PILLARS PREVIEW */}
-      <section className="page-section">
+      {/* Compact overview; full descriptions remain on the Research page. */}
+      <section className="home-research" aria-labelledby="research-preview-title">
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 56 }} className="split-grid">
+          <div className="research-preview-heading">
             <div>
-              <div className="eyebrow" style={{ marginBottom: 16 }}>{t("home.research")}</div>
-              <h2 className="display" style={{ fontSize: "clamp(32px, 4.5vw, 52px)" }}>
-                {t("home.researchDirections")}
-              </h2>
-              <p style={{ marginTop: 16, color: "var(--ink-3)", lineHeight: 1.6, maxWidth: 380 }}>
-                {t("home.researchLead")}
-              </p>
-              <button
-                className="btn btn-ghost"
-                style={{ marginTop: 28 }}
-                onClick={() => onNavigate("research")}>
-                
-                {t("home.seeAllResearch")}
-              </button>
+              <div className="eyebrow">{t("home.research")}</div>
+              <h2 id="research-preview-title" className="display">{t("home.researchDirections")}</h2>
+              <p>{t("home.researchLead")}</p>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-              {window.PILLARS.map((p, i) => {
-                const isImpact = p.n === "06";
-                return (
-                  <div
-                    key={p.n}
-                    className="cell"
-                    style={{
-                      background: isImpact ? "var(--paper-3)" : undefined,
-                      borderColor: isImpact ? "var(--rule)" : undefined,
-                      paddingTop: 28
-                    }}>
-                    
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 28 }}>
-                      <div style={{ color: "var(--ink-2)", display: "flex", alignItems: "center", justifyContent: "center", width: 40, height: 40 }}>
-                        {PILLAR_ICONS[p.n]}
-                      </div>
-                      <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--ink-4)", letterSpacing: "0.08em" }}>{p.n}</div>
-                    </div>
-                    <div style={{ fontSize: 24, fontFamily: "var(--font-display)", marginBottom: 12, letterSpacing: "-0.005em", lineHeight: 1.15 }}>{t(`pillars.${i}.title`)}</div>
-                    <div style={{ color: "var(--ink-2)", lineHeight: 1.6, fontSize: 14, maxWidth: isImpact ? 640 : "none" }}>{t(`pillars.${i}.body`)}</div>
-                  </div>);
-
-              })}
-            </div>
+            <button className="btn btn-ghost" onClick={() => onNavigate("research")}>{t("home.seeAllResearch")}</button>
+          </div>
+          <div className="research-preview-grid">
+            {window.PILLARS.map((p, i) => (
+              <article key={p.n} className="research-preview-card">
+                <div className="research-preview-icon" aria-hidden="true">{PILLAR_ICONS[p.n]}</div>
+                <span className="research-preview-number">{p.n}</span>
+                <h3>{t(`home.pillarTitles.${i}`)}</h3>
+                <p>{t(`home.pillarSummaries.${i}`)}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>

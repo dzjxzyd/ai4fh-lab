@@ -314,12 +314,20 @@ window.PUBLICATIONS = [
   },
 ];
 
+// Keep News newest first. Short bilingual headlines also appear in the homepage Latest strip.
 window.NEWS = [
-  { date: "Oct 11, 2026", body: "AI4FH Lab has a new logo! Explore the white-on-black, transparent black, and transparent white wordmark versions below, with original SVG and PNG files available to download.", image: "images/logos/AI4FH_white_on_black.svg", imageFit: "contain", imageBackground: "#000" },
-  { date: "Sep 11, 2026", body: "AI4FH Lab held an interdisciplinary AI workshop with Dr. Wanling Cai’s group at UCD, exchanging ideas on AI applications in bioactive compounds, biomanufacturing, and human–computer interaction. We rounded off the day with dinner at King Skewer." },
-  { date: "Aug 31, 2026", body: "Welcome Dongyang and Qidong to the AI4FH Lab.", image: "images/welcome-dongyang-qidong.jpg" },
-  { date: "Jun 2025", body: "AI4FH Lab is established at UCD. We are open for PhD, MSc, and postdoc inquiries.", image: "images/first.jpg" },
+  { date: "Oct 11, 2026", headline: { en: "New AI4FH logo", zh: "AI4FH 全新 Logo" }, body: "AI4FH Lab has a new logo! Explore the white-on-black, transparent black, and transparent white wordmark versions below, with original SVG and PNG files available to download.", image: "images/logos/AI4FH_white_on_black.svg", imageFit: "contain", imageBackground: "#000" },
+  { date: "Sep 11, 2026", headline: { en: "Interdisciplinary AI workshop", zh: "跨学科 AI Workshop" }, body: "AI4FH Lab held an interdisciplinary AI workshop with Dr. Wanling Cai’s group at UCD, exchanging ideas on AI applications in bioactive compounds, biomanufacturing, and human–computer interaction. We rounded off the day with dinner at King Skewer." },
+  { date: "Aug 31, 2026", headline: { en: "Welcome Dongyang & Qidong", zh: "欢迎 Dongyang 与 Qidong" }, body: "Welcome Dongyang and Qidong to the AI4FH Lab.", image: "images/welcome-dongyang-qidong.jpg" },
+  { date: "Jun 2025", headline: { en: "AI4FH Lab established at UCD", zh: "AI4FH 实验室在 UCD 成立" }, body: "AI4FH Lab is established at UCD. We are open for PhD, MSc, and postdoc inquiries.", image: "images/first.jpg" },
 ];
+
+window.getLatestNews = function (lang = "en") {
+  const item = window.NEWS[0];
+  if (!item) return null;
+  const summary = (item.headline?.[lang] || item.headline?.en || item.body?.split(/[.!?。！？]/u)[0] || "").trim();
+  return { ...item, headline: summary.length > 80 ? summary.slice(0, 77).trimEnd() + "…" : summary };
+};
 
 window.NEWS_GALLERY = [
   { date: "Oct 11, 2026", image: "images/logos/AI4FH_white_on_black.svg", imageFit: "contain", imageBackground: "#000", downloads: [{ label: "SVG", href: "images/logos/AI4FH_white_on_black.svg" }, { label: "PNG", href: "images/logos/AI4FH_white_on_black.png" }] },
@@ -378,6 +386,19 @@ window.I18N = {
       research: "Research",
       researchDirections: "Research directions",
       researchLead: "Six active threads at the AI–food–health interface.",
+      spotlight: {
+        eyebrow: "Latest from AI4FH",
+        button: "Read news",
+      },
+      pillarTitles: ["Bioactive discovery", "Smart biomanufacturing", "Language models for AI4Science", "Alternative protein", "AI for Science", "Agri-valorization"],
+      pillarSummaries: [
+        "Discovering bioactive peptides and small molecules with AI.",
+        "Guiding fermentation and bioprocess design with AI.",
+        "Lightweight models for proteins, peptides, and microbes.",
+        "Predicting protein functionality for food applications.",
+        "LLMs and deep learning for food, nutrition, and biochemistry.",
+        "Turning agricultural byproducts into functional ingredients.",
+      ],
       seeAllResearch: "See all research →",
       openSource: "Tools & resources",
       modelsTitle: "Models, databases & webservers",
@@ -546,6 +567,19 @@ window.I18N = {
       research: "研究",
       researchDirections: "研究方向",
       researchLead: "围绕 AI、食品与健康交叉界面的六个活跃方向。",
+      spotlight: {
+        eyebrow: "AI4FH 最新动态",
+        button: "查看动态",
+      },
+      pillarTitles: ["生物活性发现", "智能生物制造", "AI4Science 语言模型", "替代蛋白", "AI for Science", "农业副产物高值化"],
+      pillarSummaries: [
+        "利用 AI 发现生物活性肽和小分子。",
+        "以 AI 指导发酵与生物加工实验设计。",
+        "面向蛋白质、肽和微生物的轻量语言模型。",
+        "预测蛋白质功能特性，支持食品应用。",
+        "将大语言模型与深度学习用于食品、营养和生物化学。",
+        "将农业副产物转化为功能性配料。",
+      ],
       seeAllResearch: "查看全部研究 →",
       openSource: "工具与资源",
       modelsTitle: "模型、数据库与 Web 服务",
